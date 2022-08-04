@@ -19,11 +19,24 @@ if [[ $dir =~ ^[1-9]- ]]; then
     dir="0$dir"
 fi
 
-mkdir "$dir"
+mkdir -p "$dir"
 cd "$dir"
 
-go mod init github.com/oliverisaac/${PWD##*/git/}
+if ! [[ -e go.mod ]]; then
+    go mod init github.com/oliverisaac/${PWD##*/git/}
+fi
+
+echo "require codewares/kata v0.0.0-00010101000000-000000000000" >> go.mod
+echo "replace codewares/kata => ./." >> go.mod
+
+go get github.com/onsi/ginkgo
+go get github.com/onsi/gomega
+
+go mod tidy
+
+touch main.go main_test.go
 
 git add .
+
 git commit . -n -m "🎉 Initial setup of: $dir"
 
