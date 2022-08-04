@@ -24,6 +24,12 @@ func TestTwoSum(t *testing.T) {
 			target:  4,
 			want:    [2]int{0, 1},
 		},
+		{
+			name:    "duplicate numbers",
+			numbers: []int{5, 2, 2, 1},
+			target:  4,
+			want:    [2]int{1, 2},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
