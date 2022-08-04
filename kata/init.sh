@@ -23,20 +23,13 @@ mkdir -p "$dir"
 cd "$dir"
 
 if ! [[ -e go.mod ]]; then
-    go mod init github.com/oliverisaac/${PWD##*/git/}
+    go mod init codewarrior/kata
 fi
-
-echo "require codewarrior/kata v0.0.0-00010101000000-000000000000" >> go.mod
-echo "replace codewarrior/kata => ./." >> go.mod
-
-go get github.com/onsi/ginkgo
-go get github.com/onsi/gomega
 
 go mod tidy
 
 touch main.go main_test.go
 
 git add .
-
-git commit . -n -m "🎉 Initial setup of: $dir"
+git commit . -n -m "🎉 Initial setup of: $dir" < /dev/null
 
