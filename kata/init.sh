@@ -26,8 +26,8 @@ if ! [[ -e go.mod ]]; then
     go mod init github.com/oliverisaac/${PWD##*/git/}
 fi
 
-echo "require codewares/kata v0.0.0-00010101000000-000000000000" >> go.mod
-echo "replace codewares/kata => ./." >> go.mod
+echo "require codewarrior/kata v0.0.0-00010101000000-000000000000" >> go.mod
+echo "replace codewarrior/kata => ./." >> go.mod
 
 go get github.com/onsi/ginkgo
 go get github.com/onsi/gomega
